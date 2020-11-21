@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import styled from "styled-components";
 
-function App() {
+import Home from "./screens/Home";
+import Menu from "./screens/Menu";
+import Favorites from "./screens/Favorites";
+import Filter from "./screens/Filter";
+import AddComment from "./screens/AddComment";
+
+const Background = styled.div`
+  min-height: 100vh;
+  background-color: #f9fcff;
+  display: flex;
+`;
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-wrap: wrap;
+  padding: 4rem 1rem;
+  width: 100%;
+`;
+export interface AppProps {}
+
+const App: React.SFC<AppProps> = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Background>
+      <Router>
+        <Menu />
+        <Main>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/filter" component={Filter} />
+            <Route path="/favorites" component={Favorites} />
+            <Route path="/add-comment" component={AddComment} />
+          </Switch>
+        </Main>
+      </Router>
+    </Background>
   );
-}
+};
 
 export default App;
