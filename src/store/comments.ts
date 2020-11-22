@@ -1,7 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+import { RootState, AppDispatch } from '../store';
+import { INewComment, IComment, IAPIComment } from "../types";
 
 interface CommentsState {
-    list: [],
+    list: IComment[],
     loading: Boolean,
     error: string,
 }
@@ -15,17 +18,18 @@ const commentsSlice = createSlice({
     name: 'comments',
     initialState,
     reducers: {
-        commentsAdded(state, action) {
+        commentsAdded(state, action: PayloadAction<[IAPIComment]>) {
             state.list = action.payload;
         },
-        commentsError(state, action) {
+        commentsError(state, action: PayloadAction<string>) {
             state.error = action.payload;
         },
-        commentsLoading(state, action) {
+        commentsLoading(state, action: PayloadAction<boolean>) {
             state.loading = action.payload
         },
-        commentAdded(state: any, action) {
-            state.list.push({ ...action.payload, id: state.list.length > 0 ? Math.max(...state.list.map((comment: any) => comment.id)) + 1 : 1 });
+        commentAdded(state, action: PayloadAction<INewComment>) {
+            let newId: number = state.list.length > 0 ? Math.max(...state.list.map((comment: IComment) => comment.id)) + 1 : 1;
+            state.list = [...state.list, { ...action.payload, id: newId }]
         },
     }
 })
@@ -34,11 +38,11 @@ export const { commentsAdded, commentsError, commentsLoading, commentAdded } = c
 
 export default commentsSlice.reducer
 
-export const selectComments = (state: any) => state.comments.list;
-export const selectCommentsError = (state: any) => state.comments.error;
-export const selectCommentsLoading = (state: any) => state.comments.loading;
+export const selectComments = (state: RootState) => state.comments.list;
+export const selectCommentsError = (state: RootState) => state.comments.error;
+export const selectCommentsLoading = (state: RootState) => state.comments.loading;
 
-export const getComments = () => (dispatch: any) => {
+export const getComments = () => (dispatch: AppDispatch) => {
     fetch("https://jsonplaceholder.typicode.com/comments")
         .then((response) => response.json())
         .then((data) => {

@@ -1,31 +1,26 @@
 import React, { useState } from "react";
 import { Formik, ErrorMessage as FormikErrorMessage } from "formik";
-import * as Yup from "yup";
 import styled from "styled-components";
 
-import Form, { Field, Label, ErrorMessage } from "../components/Form";
+import Form, {
+  Field,
+  Label,
+  ErrorMessage,
+  RadioGroup,
+} from "../components/Form";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Card, { Top, Bottom } from "../components/Card";
-import { leaveLetters, removeLetters } from "../helpers";
+import { leaveLetters, removeLetters } from "../helpers/helpers";
+import { filterValidationSchema as validationSchema } from "../helpers/validationSchema";
 
-const Result = styled.p`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: baseline;
+const Result = styled.div`
+  text-align: center;
   width: 100%;
+  border: 1px solid rgb(236, 236, 236);
+  margin-top: 1rem;
+  padding: 0.5rem;
 `;
-
-const validationSchema = Yup.object().shape({
-  letters: Yup.string()
-    .matches(/[a-zA-Z]/)
-    .required("Required"),
-  text: Yup.string()
-    .matches(/^[a-zA-Z\s]*$/)
-    .required("Required"),
-  select: Yup.string().min(2, "Too Short!").required("Required"),
-});
 
 export interface FilterProps {}
 
@@ -67,28 +62,32 @@ const Filter: React.SFC<FilterProps> = () => {
               <ErrorMessage>
                 <FormikErrorMessage name="text" />
               </ErrorMessage>
-              <div>
+              <RadioGroup>
                 <Label>
-                  Leave
                   <Field type="radio" id="select" name="select" value="leave" />
+                  Leave
                 </Label>
                 <Label>
-                  Remove
                   <Field
                     type="radio"
                     id="select"
                     name="select"
                     value="remove"
                   />
+                  Remove
                 </Label>
-              </div>
+              </RadioGroup>
               <ErrorMessage>
                 <FormikErrorMessage name="select" />
               </ErrorMessage>
               <Button type="submit">Submit</Button>
             </Form>
           </Formik>
-          {result && <Result>{result}</Result>}
+          {result && (
+            <Result>
+              <p>Result: {result}</p>
+            </Result>
+          )}
         </Bottom>
       </Card>
     </Container>

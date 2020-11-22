@@ -24,6 +24,16 @@ export const Field = styled(FormikField)`
 export const ErrorMessage = styled.div`
   font-size:14px;
   color: #E91E63;
-  margin-bottom: 0.5rem;`;
+  margin-bottom: 0.5rem;
+  height: 1rem;`;
+
+export const RadioGroup = styled.div`
+label:not(:last-child){
+  margin-right: 1rem;
+}
+input{
+    margin-right: 0.5rem;
+  }
+`;
 
 export default Form;

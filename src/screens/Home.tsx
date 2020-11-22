@@ -18,7 +18,7 @@ const { useEffect } = React;
 export interface HomeProps {}
 
 const Home: React.SFC<HomeProps> = () => {
-  const comments: [IComment] = useSelector(selectComments);
+  const comments: IComment[] = useSelector(selectComments);
   const error = useSelector(selectCommentsError);
   const loading = useSelector(selectCommentsLoading);
   const dispatch = useDispatch();

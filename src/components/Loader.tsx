@@ -7,6 +7,7 @@ const StyledLoader = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
   .lds-roller {
     display: inline-block;
     position: relative;
@@ -24,7 +25,7 @@ const StyledLoader = styled.div`
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #fff;
+    background: #cef;
     margin: -4px 0 0 -4px;
   }
   .lds-roller div:nth-child(1) {

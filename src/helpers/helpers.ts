@@ -1,6 +1,4 @@
 export const removeLetters = (letters: string, text: string) => {
-    //forEach(letter=> letter+ "\");
-    //const regex = new RegExp(`${letters.split('').join('\\')}/g`);
     const regex = new RegExp(`[${letters}]`, 'g');
     return text.replace(regex, "");
 }

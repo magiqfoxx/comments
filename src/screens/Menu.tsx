@@ -1,12 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  BrowserRouter as Router,
-  NavLink,
-  Switch,
-  Route,
-  Link,
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Nav = styled.ul`
   height: 100vh;
@@ -15,6 +9,9 @@ const Nav = styled.ul`
   font-size: 1rem;
   padding: 4rem 0;
   border-right: 1px solid rgb(236, 236, 236);
+  position: sticky;
+  height: 100vh;
+  top: 0;
 `;
 const Item = styled.li`
   color: rgb(121, 120, 140);

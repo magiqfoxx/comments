@@ -1,7 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { RootState } from '../store';
+import { IComment } from "../types";
 
 interface FavoritesState {
-    list: [],
+    list: IComment[],
     loading: Boolean,
 }
 export const initialState: FavoritesState = {
@@ -13,15 +16,15 @@ const favoritesSlice = createSlice({
     name: 'favorites',
     initialState,
     reducers: {
-        favoriteAdded(state: any, { payload }: any) {
-            state.list.push({ ...payload });
+        favoriteAdded(state, action: PayloadAction<IComment>) {
+            state.list = [...state.list, { ...action.payload }]
         },
-        favoriteRemoved(state, action) {
-            state.list = state.list.filter((comment: any) => {
+        favoriteRemoved(state, action: PayloadAction<number>) {
+            state.list = state.list.filter((comment: IComment) => {
                 return comment.id !== action.payload;
             })
         },
-        favoritesLoading(state, action) {
+        favoritesLoading(state, action: PayloadAction<boolean>) {
             state.loading = action.payload;
         }
     }
@@ -31,5 +34,5 @@ export const { favoriteAdded, favoriteRemoved, favoritesLoading } = favoritesSli
 
 export default favoritesSlice.reducer
 
-export const selectFavorites = (state: any) => state.favorites.list;
-export const selectFavoritesLoading = (state: any) => state.favorites.loading;
+export const selectFavorites = (state: RootState) => state.favorites.list;
+export const selectFavoritesLoading = (state: RootState) => state.favorites.loading;

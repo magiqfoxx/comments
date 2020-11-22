@@ -22,9 +22,8 @@ const Main = styled.div`
   padding: 4rem 1rem;
   width: 100%;
 `;
-export interface AppProps {}
 
-const App: React.SFC<AppProps> = () => {
+const App: React.SFC = () => {
   return (
     <Background>
       <Router>

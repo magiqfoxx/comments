@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, ErrorMessage as FormikErrorMessage } from "formik";
-import * as Yup from "yup";
+
 import { useDispatch } from "react-redux";
 
 import { commentAdded } from "../store/comments";
@@ -8,12 +8,7 @@ import Form, { Field, Label, ErrorMessage } from "../components/Form";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Card, { Top, Bottom } from "../components/Card";
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string().min(3, "Too Short!").matches(/[a-z]/).required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
-  body: Yup.string().min(2, "Too Short!").required("Required"),
-});
+import { addCommentValidationSchema as validationSchema } from "../helpers/validationSchema";
 
 export interface AddCommentProps {}
 
@@ -31,7 +26,7 @@ const AddComment: React.SFC<AddCommentProps> = () => {
               body: "",
             }}
             validationSchema={validationSchema}
-            onSubmit={async ({ name, email, body }) => {
+            onSubmit={({ name, email, body }) => {
               dispatch(commentAdded({ name, email, body }));
             }}
           >
