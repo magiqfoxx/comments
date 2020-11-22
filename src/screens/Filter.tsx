@@ -29,7 +29,7 @@ const Filter: React.SFC<FilterProps> = () => {
   return (
     <Container>
       <Card>
-        <Top>Filter letters</Top>
+        <Top>Filtr</Top>
         <Bottom>
           <Formik
             initialValues={{
@@ -45,12 +45,12 @@ const Filter: React.SFC<FilterProps> = () => {
             }}
           >
             <Form>
-              <Label htmlFor="letters">Letters</Label>
+              <Label htmlFor="letters">Litery</Label>
               <Field id="letters" name="letters" placeholder="[a-Z]" />
               <ErrorMessage>
                 <FormikErrorMessage name="letters" />
               </ErrorMessage>
-              <Label htmlFor="text">Text</Label>
+              <Label htmlFor="text">Tekst</Label>
               <Field
                 component="textarea"
                 rows="4"
@@ -65,7 +65,7 @@ const Filter: React.SFC<FilterProps> = () => {
               <RadioGroup>
                 <Label>
                   <Field type="radio" id="select" name="select" value="leave" />
-                  Leave
+                  Pozostaw
                 </Label>
                 <Label>
                   <Field
@@ -74,7 +74,7 @@ const Filter: React.SFC<FilterProps> = () => {
                     name="select"
                     value="remove"
                   />
-                  Remove
+                  Usuń
                 </Label>
               </RadioGroup>
               <ErrorMessage>

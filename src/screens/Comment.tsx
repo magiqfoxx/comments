@@ -41,12 +41,12 @@ const Comment: React.SFC<CommentProps> = ({
             onClick={() => dispatch(favoriteAdded({ name, email, body, id }))}
             secondary={true}
           >
-            Add to favorites
+            Dodaj do wybranych
           </Button>
         )}
         {removable && (
           <Button onClick={() => dispatch(favoriteRemoved(id))} secondary>
-            Remove
+            Usuń
           </Button>
         )}
       </Top>

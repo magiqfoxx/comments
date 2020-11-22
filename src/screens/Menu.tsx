@@ -50,17 +50,17 @@ const Menu: React.SFC<MenuProps> = () => {
       <Nav>
         <Item>
           <StyledNavLink to="/" exact activeClassName="selected">
-            Home
+            Strona Główna
           </StyledNavLink>
         </Item>
         <Item>
           <StyledNavLink to="/favorites" activeClassName="selected">
-            Favorites
+            Wybrane komentarze
           </StyledNavLink>
           <SubSection>
             <SubItem>
               <StyledSubNavLink to="/add-comment" activeClassName="selected">
-                Add comment
+                Dodaj komentarz
               </StyledSubNavLink>
             </SubItem>
           </SubSection>
@@ -68,7 +68,7 @@ const Menu: React.SFC<MenuProps> = () => {
 
         <Item>
           <StyledNavLink to="/filter" activeClassName="selected">
-            Filter
+            Filtr
           </StyledNavLink>
         </Item>
       </Nav>

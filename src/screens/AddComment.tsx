@@ -17,7 +17,7 @@ const AddComment: React.SFC<AddCommentProps> = () => {
   return (
     <Container>
       <Card>
-        <Top>Add a new comment</Top>
+        <Top>Dodaj komentarz</Top>
         <Bottom>
           <Formik
             initialValues={{
@@ -31,7 +31,7 @@ const AddComment: React.SFC<AddCommentProps> = () => {
             }}
           >
             <Form>
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">Nazwa</Label>
               <Field id="name" name="name" placeholder="Jane" />
               <ErrorMessage>
                 <FormikErrorMessage name="name" />
@@ -46,7 +46,7 @@ const AddComment: React.SFC<AddCommentProps> = () => {
               <ErrorMessage>
                 <FormikErrorMessage name="email" />
               </ErrorMessage>
-              <Label htmlFor="body">Contents</Label>
+              <Label htmlFor="body">Treść</Label>
               <Field
                 component="textarea"
                 id="body"
@@ -56,7 +56,7 @@ const AddComment: React.SFC<AddCommentProps> = () => {
               <ErrorMessage>
                 <FormikErrorMessage name="body" />
               </ErrorMessage>
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Dodaj</Button>
             </Form>
           </Formik>
         </Bottom>
