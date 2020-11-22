@@ -24,7 +24,9 @@ const Home: React.SFC<HomeProps> = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !comments && dispatch(commentsLoading(true)) && dispatch(getComments());
+    comments.length < 1 &&
+      dispatch(commentsLoading(true)) &&
+      dispatch(getComments());
   }, [comments, dispatch]);
 
   return loading ? (
