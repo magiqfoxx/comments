@@ -12,7 +12,7 @@ import Container from "../components/Container";
 import Button from "../components/Button";
 import Card, { Top, Bottom } from "../components/Card";
 import { leaveLetters, removeLetters } from "../helpers/helpers";
-import { filterValidationSchema as validationSchema } from "../helpers/validationSchema";
+import { filterValidationSchema as validationSchema } from "./validationSchema";
 
 const Result = styled.div`
   text-align: center;

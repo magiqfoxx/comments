@@ -8,7 +8,7 @@ import Form, { Field, Label, ErrorMessage } from "../components/Form";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Card, { Top, Bottom } from "../components/Card";
-import { addCommentValidationSchema as validationSchema } from "../helpers/validationSchema";
+import { addCommentValidationSchema as validationSchema } from "./validationSchema";
 
 export interface AddCommentProps {}
 
