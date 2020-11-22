@@ -1,9 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+interface CommentsState {
+    list: [],
+    loading: Boolean,
+    error: string,
+}
+export const initialState: CommentsState = {
     list: [],
     loading: false,
-    error: false
+    error: ''
 }
 
 const commentsSlice = createSlice({
@@ -20,7 +25,7 @@ const commentsSlice = createSlice({
             state.loading = action.payload
         },
         commentAdded(state: any, action) {
-            state.list.push({ ...action.payload, id: Math.max(...state.list.map((comment: any) => comment.id)) + 1 });
+            state.list.push({ ...action.payload, id: state.list.length > 0 ? Math.max(...state.list.map((comment: any) => comment.id)) + 1 : 1 });
         },
     }
 })

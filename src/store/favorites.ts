@@ -1,19 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { IComment } from "../types";
-
-export interface FavoritesState {
+interface FavoritesState {
     list: [],
     loading: Boolean,
-    error: string
-    // list: [IComment] | [],
-    // loading: Boolean,
-    // error: string
 }
-const initialState: FavoritesState = {
+export const initialState: FavoritesState = {
     list: [],
     loading: false,
-    error: ''
 }
 
 const favoritesSlice = createSlice({
@@ -24,7 +17,7 @@ const favoritesSlice = createSlice({
             state.list.push({ ...payload });
         },
         favoriteRemoved(state, action) {
-            state.list.filter((comment: any) => {
+            state.list = state.list.filter((comment: any) => {
                 return comment.id !== action.payload;
             })
         },
