@@ -43,15 +43,20 @@ export const selectCommentsError = (state: RootState) => state.comments.error;
 export const selectCommentsLoading = (state: RootState) => state.comments.loading;
 
 export const getComments = () => (dispatch: AppDispatch) => {
-    fetch("https://jsonplaceholder.typicode.com/comments")
-        .then((response) => response.json())
-        .then((data) => {
-            dispatch(commentsAdded(data.slice(data.length - 21)));
-            dispatch(commentsLoading(false));
-        })
-        .catch((error) => {
+    fetch('https://jsonplaceholder.typicode.com/comments').then((response) => {
+        if (response.ok) {
+            return response.json();
+        } else {
             dispatch(commentsError('There was an error when trying to fetch comments'));
-            console.log(error);
+            console.warn('Could not fetch comments', response.status);
             dispatch(commentsLoading(false));
-        });
+        }
+    }).then((data) => {
+        dispatch(commentsAdded(data.slice(data.length - 21)));
+        dispatch(commentsLoading(false))
+    }).catch((error) => {
+        dispatch(commentsError('There was an error when trying to fetch comments'));
+        console.warn('Could not fetch comments', error);
+        dispatch(commentsLoading(false));
+    });
 };
