@@ -50,7 +50,8 @@ export const getComments = () => (dispatch: AppDispatch) => {
             dispatch(commentsLoading(false));
         })
         .catch((error) => {
-            dispatch(commentsError(error));
+            dispatch(commentsError('There was an error when trying to fetch comments'));
+            console.log(error);
             dispatch(commentsLoading(false));
         });
 };

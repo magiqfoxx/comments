@@ -7,11 +7,16 @@ import Menu from "./screens/Menu";
 import Favorites from "./screens/Favorites";
 import Filter from "./screens/Filter";
 import AddComment from "./screens/AddComment";
+import NotFound from "./screens/NotFound";
 
 const Background = styled.div`
   min-height: 100vh;
   background-color: #f9fcff;
   display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
 `;
 const Main = styled.div`
   display: flex;
@@ -34,6 +39,7 @@ const App: React.SFC = () => {
             <Route path="/filter" component={Filter} />
             <Route path="/favorites" component={Favorites} />
             <Route path="/add-comment" component={AddComment} />
+            <Route component={NotFound} />
           </Switch>
         </Main>
       </Router>

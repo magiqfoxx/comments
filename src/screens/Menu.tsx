@@ -3,18 +3,30 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const Nav = styled.ul`
-  height: 100vh;
-  width: 200px;
   background-color: white;
   font-size: 1rem;
-  padding: 4rem 0;
-  border-right: 1px solid rgb(236, 236, 236);
-  position: sticky;
-  height: 100vh;
-  top: 0;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgb(236, 236, 236);
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (min-width: 600px) {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 200px;
+    padding: 4rem 0;
+    justify-content: initial;
+    align-items: baseline;
+    border-right: 1px solid rgb(236, 236, 236);
+  }
 `;
 const Item = styled.li`
   color: rgb(121, 120, 140);
+  width: 100%;
   .selected {
     background-color: rgb(225, 245, 255);
     border-right: 3px solid rgb(53, 129, 255);
@@ -26,6 +38,7 @@ const SubSection = styled.ul`
 `;
 const SubItem = styled.li`
   color: rgb(121, 120, 140);
+  width: 100%;
   .selected {
     background-color: rgb(225, 245, 255);
     border-right: 3px solid rgb(53, 129, 255);
