@@ -10,6 +10,8 @@ It's using Redux to manage state. Typscript for static type checking.
 Styled components to handle the styling, formik and yup to handle forms and validation.
 UI is heavily inspired by ant desing.
 
+[Live version](https://magiqfoxx.github.io/comments/)
+
 ## Installation
 
 **to clone**
