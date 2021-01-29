@@ -9,7 +9,7 @@ test("should remove letters from string", () => {
 
 test("should letters letters in string", () => {
   expect(leaveLetters("abc", "abcdefghijklmnopabcdefghijklmnop")).toBe(
-    "abcabc"
+    ""
   );
   expect(leaveLetters("aeiouyw", "united arab emirates")).toBe("uieaaeiae");
 });
